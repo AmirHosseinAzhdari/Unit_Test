@@ -1,14 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Unit_Test.Calculator
 {
     public class SalaryCalculator
     {
-        public decimal GetAnnualSalary(decimal hourlyWage)
-        {
-            const int hourInYear = 2080;
-            decimal annualSalary = hourInYear * hourlyWage;
-            return annualSalary;
-        }
+        const int HourInYear = 2080;
+
+        public decimal GetAnnualSalary(decimal hourlyWage) => hourlyWage * HourInYear;
+
+        public decimal GetHourlyWage(int annualSalary) => annualSalary / HourInYear;
     }
 }
