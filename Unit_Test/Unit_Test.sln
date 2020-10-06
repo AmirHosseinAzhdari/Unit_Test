@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30509.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_Test.Tests", "Unit_Test.Tests\Unit_Test.Tests.csproj", "{FD488EBB-FEAD-46B8-AFC0-B25293917263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit_Test.Tests", "Unit_Test.Tests\Unit_Test.Tests.csproj", "{FD488EBB-FEAD-46B8-AFC0-B25293917263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_Test.Calculator", "Unit_Test.Calculator\Unit_Test.Calculator.csproj", "{3DC62E5A-4E13-4C0C-8994-9238AE972271}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit_Test.Calculator", "Unit_Test.Calculator\Unit_Test.Calculator.csproj", "{3DC62E5A-4E13-4C0C-8994-9238AE972271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_Test.WebRepository", "Unit_Test.WebRepository\Unit_Test.WebRepository.csproj", "{498B57DA-93DE-45A3-8961-D03F9D9FE248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3DC62E5A-4E13-4C0C-8994-9238AE972271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DC62E5A-4E13-4C0C-8994-9238AE972271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DC62E5A-4E13-4C0C-8994-9238AE972271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498B57DA-93DE-45A3-8961-D03F9D9FE248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498B57DA-93DE-45A3-8961-D03F9D9FE248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498B57DA-93DE-45A3-8961-D03F9D9FE248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498B57DA-93DE-45A3-8961-D03F9D9FE248}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
