@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,7 +13,7 @@ namespace Unit_Test.Tests
     public class WebRepositoryTests
     {
         [TestMethod]
-        public void FetchBooksTest()
+        public void FetchBooksTest_ShouldReturnAllBooks()
         {
             //Arrange
             IQueryable<Book> books = new List<Book>
@@ -48,7 +49,7 @@ namespace Unit_Test.Tests
         }
 
         [TestMethod]
-        public void CreateBookTest()
+        public void CreateBookTest_ShouldAddNewBook()
         {
             //Arrange
             var mockSet = new Mock<DbSet<Book>>();
@@ -58,11 +59,56 @@ namespace Unit_Test.Tests
 
             //Act
             var repository = new BookRepository(mockContext.Object);
-            repository.AddBook("The Compound Effect" , "Darren Hardy");
+            repository.AddBook("The Compound Effect", "Darren Hardy");
 
             //Assert
-            mockSet.Verify(m=>m.Add(It.IsAny<Book>()),Times.Once);
-            mockContext.Verify(m=>m.SaveChanges(),Times.Once);
+            mockSet.Verify(m => m.Add(It.IsAny<Book>()), Times.Once);
+            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+        }
+
+        [TestMethod]
+        public void DeleteBookTest_ShouldRemoveBook_WhenExist()
+        {
+            //Arrange
+            var mockSet = new Mock<DbSet<Book>>();
+            int id = 1;
+
+            var mockContext = new Mock<BookStoreContext>();
+            mockContext.Setup(c => c.Books).Returns(mockSet.Object);
+
+            //Act
+            var repository = new BookRepository(mockContext.Object);
+            repository.DeleteBook(id);
+
+            //Assert
+            mockSet.Verify(m => m.Remove(It.IsAny<Book>()), Times.Once);
+            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, "The Compound Effect", "Darren Hardy")]
+        public void EditBookTest_ShouldUpdateBook_WhenBookExist(int id, string title, string author)
+        {
+            //Arrange
+            Book book = new Book()
+            {
+                Id = id,
+                Author = author,
+                Title = title
+            };
+
+            var mockSet = new Mock<DbSet<Book>>();
+
+            var mockContext = new Mock<BookStoreContext>();
+            mockContext.Setup(m => m.Books).Returns(mockSet.Object);
+
+            //Act
+            var repository = new BookRepository(mockContext.Object);
+            repository.EditBook(book);
+
+            //Assert
+            mockSet.Verify(m => m.Update(It.IsAny<Book>()), Times.Once);
+            mockContext.Verify(m => m.SaveChanges(), Times.Once);
         }
     }
 }

@@ -25,5 +25,18 @@ namespace Unit_Test.WebRepository
             });
             _context.SaveChanges();
         }
+
+        public void DeleteBook(int id)
+        {
+            var book = _context.Books.Find(id);
+            _context.Books.Remove(book);
+            _context.SaveChanges();
+        }
+
+        public void EditBook(Book book)
+        {
+            _context.Books.Update(book);
+            _context.SaveChanges();
+        }
     }
 }
